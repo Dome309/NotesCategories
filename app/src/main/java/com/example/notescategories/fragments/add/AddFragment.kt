@@ -1,4 +1,4 @@
-package com.example.roomapp.fragments.add
+package com.example.notescategories.fragments.add
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,12 +10,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.roomapp.R
-import com.example.roomapp.data.User
-import com.example.roomapp.data.UserViewModel
+import com.example.notescategories.R
+import com.example.notescategories.data.User
+import com.example.notescategories.data.UserViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
-import kotlinx.android.synthetic.main.fragment_add.view.addFirstName_et
 
 class AddFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.roomapp
+package com.example.notescategories
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.example.roomapp.data
+package com.example.notescategories.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

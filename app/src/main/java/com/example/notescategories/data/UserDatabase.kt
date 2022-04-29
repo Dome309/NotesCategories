@@ -1,4 +1,4 @@
-package com.example.roomapp.data
+package com.example.notescategories.data
 
 import android.content.Context
 import androidx.room.Database
