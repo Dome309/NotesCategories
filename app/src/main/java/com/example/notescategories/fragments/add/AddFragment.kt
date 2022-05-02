@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.notescategories.R
-import com.example.notescategories.data.User
-import com.example.notescategories.data.UserViewModel
+import com.example.notescategories.model.User
+import com.example.notescategories.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
 
