@@ -33,7 +33,6 @@ class UpdateFragment : Fragment() {
 
         view.updateFirstName_et.setText(args.currentUser.firstName)
         view.updateLastName_et.setText(args.currentUser.lastName)
-        view.updateAge_et.setText(args.currentUser.age.toString())
 
         view.update_btn.setOnClickListener {
             updateItem()
@@ -48,11 +47,10 @@ class UpdateFragment : Fragment() {
     private fun updateItem() {
         val firstName = updateFirstName_et.text.toString()
         val lastName = updateLastName_et.text.toString()
-        val age = Integer.parseInt(updateAge_et.text.toString())
 
-        if (inputCheck(firstName, lastName, updateAge_et.text)) {
+        if (inputCheck(firstName, lastName)) {
             //Create user object
-            val updatedUser = User(args.currentUser.id, firstName, lastName, age)
+            val updatedUser = User(args.currentUser.id, firstName, lastName)
             //Update current user
             mUserViewModel.updateUser(updatedUser)
             Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
@@ -64,8 +62,8 @@ class UpdateFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean {
-        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
+    private fun inputCheck(firstName: String, lastName: String): Boolean {
+        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

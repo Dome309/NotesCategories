@@ -1,7 +1,6 @@
 package com.example.notescategories.fragments.add
 
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,11 +38,11 @@ class AddFragment : Fragment() {
     private fun insertDataToDatabase() {
         val firstName = addFirstName_et.text.toString()
         val lastName = addLastName_et.text.toString()
-        val age = addAge_et.text
 
-        if(inputCheck(firstName, lastName, age)){
+
+        if(inputCheck(firstName, lastName)){
             // Create User Object
-            val user = User(0, firstName, lastName, Integer.parseInt(age.toString()))
+            val user = User(0, firstName, lastName)
             // Add Data to Database
             mUserViewModel.addUser(user)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
@@ -54,8 +53,8 @@ class AddFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String, age: Editable): Boolean{
-        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty())
+    private fun inputCheck(firstName: String, lastName: String): Boolean{
+        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
     }
 
 }
