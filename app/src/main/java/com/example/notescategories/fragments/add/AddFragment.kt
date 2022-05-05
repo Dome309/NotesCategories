@@ -10,14 +10,14 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.notescategories.R
-import com.example.notescategories.model.User
-import com.example.notescategories.viewmodel.UserViewModel
+import com.example.notescategories.model.Note
+import com.example.notescategories.viewmodel.NoteViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
 
 class AddFragment : Fragment() {
 
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mNoteViewModel: NoteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mNoteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
 
         view.add_btn.setOnClickListener {
             insertDataToDatabase()
@@ -41,10 +41,10 @@ class AddFragment : Fragment() {
 
 
         if(inputCheck(firstName, lastName)){
-            // Create User Object
-            val user = User(0, firstName, lastName)
+            // Create Note Object
+            val user = Note(0, firstName, lastName)
             // Add Data to Database
-            mUserViewModel.addUser(user)
+            mNoteViewModel.addNote(user)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
             // Navigate Back
             findNavController().navigate(R.id.action_addFragment_to_listFragment)

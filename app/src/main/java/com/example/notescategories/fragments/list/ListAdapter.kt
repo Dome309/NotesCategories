@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notescategories.R
-import com.example.notescategories.model.User
+import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.custom_row.view.*
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
-    private var userList = emptyList<User>()
+    private var noteList = emptyList<Note>()
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -24,7 +24,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = userList[position]
+        val currentItem = noteList[position]
         holder.itemView.firstName_txt.text = currentItem.firstName
         holder.itemView.lastName_txt.text = currentItem.lastName
 
@@ -36,11 +36,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return noteList.size
     }
 
-    fun setData(user: List<User>){
-        this.userList = user
+    fun setData(note: List<Note>){
+        this.noteList = note
         notifyDataSetChanged()
     }
 }

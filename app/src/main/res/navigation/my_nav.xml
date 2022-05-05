@@ -35,7 +35,7 @@
             android:id="@+id/action_updateFragment_to_listFragment"
             app:destination="@id/listFragment" />
         <argument
-            android:name="currentUser"
-            app:argType="com.example.notescategories.model.User" />
+            android:name="currentNote"
+            app:argType="com.example.notescategories.model.Note" />
     </fragment>
 </navigation>

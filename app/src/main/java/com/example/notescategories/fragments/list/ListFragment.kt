@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notescategories.R
-import com.example.notescategories.viewmodel.UserViewModel
+import com.example.notescategories.viewmodel.NoteViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
 class ListFragment : Fragment() {
 
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var mNoteViewModel: NoteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,8 +31,8 @@ class ListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         //UserViewModel
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
+        mNoteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
+        mNoteViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
         })
 
@@ -51,15 +51,15 @@ class ListFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.menu_delete){
-            deleteAllUsers()
+            deleteAllNotes()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun deleteAllUsers() {
+    private fun deleteAllNotes() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-            mUserViewModel.deleteAllUsers()
+            mNoteViewModel.deleteAllNotes()
             Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT).show()
         }
         builder.setNegativeButton("No") { _, _ ->
