@@ -1,6 +1,6 @@
 # NotesCategories
 
-NotesCategories is an Android app build with Kotlin that allows the note to takes notes
+NotesCategories is an Android app build with Kotlin that allows the user to takes notes
 
 ## Features
 
