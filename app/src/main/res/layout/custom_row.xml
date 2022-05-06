@@ -5,24 +5,43 @@
     android:id="@+id/rowLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_18sdp">
+    >
 
     <TextView
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         android:id="@+id/firstName_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
         android:text="Title"
-        android:textSize="@dimen/_14sdp"
+        android:textSize="18dp"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+
         android:id="@+id/lastName_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Descrizione"
-        android:textSize="@dimen/_11sdp"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:text="Description"
+        android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstName_txt" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/lastName_txt"
+        tools:layout_editor_absoluteX="14dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
