@@ -11,5 +11,6 @@ data class Note(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val firstName: String,
-    val lastName: String
+    val lastName: String,
+    val category: String
 ):Parcelable

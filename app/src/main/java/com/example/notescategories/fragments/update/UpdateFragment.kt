@@ -21,10 +21,7 @@ class UpdateFragment : Fragment() {
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var mNoteViewModel: NoteViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update, container, false)
 
@@ -32,6 +29,7 @@ class UpdateFragment : Fragment() {
 
         view.updateFirstName_et.setText(args.currentNote.firstName)
         view.updateLastName_et.setText(args.currentNote.lastName)
+        view.updateCategory_et.setText(args.currentNote.category)
 
         view.update_btn.setOnClickListener {
             updateItem()
@@ -46,12 +44,13 @@ class UpdateFragment : Fragment() {
     private fun updateItem() {
         val firstName = updateFirstName_et.text.toString()
         val lastName = updateLastName_et.text.toString()
+        val category = updateCategory_et.text.toString()
 
-        if (inputCheck(firstName, lastName)) {
+        if (inputCheck(firstName, lastName, category)) {
             //Create user object
-            val updatedUser = Note(args.currentNote.id, firstName, lastName)
+            val updateNote = Note(args.currentNote.id, firstName, lastName, category)
             //Update current user
-            mNoteViewModel.updateNote(updatedUser)
+            mNoteViewModel.updateNote(updateNote)
             Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show()
             //Navigate back
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
@@ -61,7 +60,7 @@ class UpdateFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String): Boolean {
+    private fun inputCheck(firstName: String, lastName: String, category: String): Boolean {
         return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
     }
 
@@ -80,7 +79,11 @@ class UpdateFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
             mNoteViewModel.deleteNote(args.currentNote)
-            Toast.makeText(requireContext(), "Successfully removed: ${args.currentNote.firstName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Successfully removed: ${args.currentNote.firstName}",
+                Toast.LENGTH_SHORT
+            ).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
         builder.setNegativeButton("No") { _, _ ->

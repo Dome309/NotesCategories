@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="Title"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -26,12 +26,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="Note text"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updateFirstName_et" />
+
+    <EditText
+        android:id="@+id/updateCategory_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Category"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateLastName_et" />
 
     <Button
         android:id="@+id/update_btn"
@@ -42,6 +55,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateLastName_et" />
+        app:layout_constraintTop_toBottomOf="@+id/updateCategory_et" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

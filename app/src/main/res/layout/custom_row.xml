@@ -33,11 +33,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstName_txt" />
 
+    <TextView
+
+        android:id="@+id/category_txt"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:text="Category"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastName_txt" />
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="24dp"
         android:background="?android:attr/listDivider"
         android:backgroundTint="@android:color/black"
         app:layout_constraintTop_toBottomOf="@+id/lastName_txt"

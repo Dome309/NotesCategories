@@ -27,8 +27,9 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         val currentItem = noteList[position]
         holder.itemView.firstName_txt.text = currentItem.firstName
         holder.itemView.lastName_txt.text = currentItem.lastName
+        holder.itemView.category_txt.text = currentItem.category
 
-        holder.itemView.rowLayout.setOnClickListener{
+        holder.itemView.rowLayout.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
@@ -39,7 +40,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         return noteList.size
     }
 
-    fun setData(note: List<Note>){
+    fun setData(note: List<Note>) {
         this.noteList = note
         notifyDataSetChanged()
     }

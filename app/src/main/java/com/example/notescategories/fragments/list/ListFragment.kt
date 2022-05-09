@@ -17,10 +17,7 @@ class ListFragment : Fragment() {
 
     private lateinit var mNoteViewModel: NoteViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
@@ -32,8 +29,8 @@ class ListFragment : Fragment() {
 
         //UserViewModel
         mNoteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
-        mNoteViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
-            adapter.setData(user)
+        mNoteViewModel.readAllData.observe(viewLifecycleOwner, Observer { note ->
+            adapter.setData(note)
         })
 
         view.floatingActionButton.setOnClickListener {
@@ -50,7 +47,7 @@ class ListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.menu_delete){
+        if (item.itemId == R.id.menu_delete) {
             deleteAllNotes()
         }
         return super.onOptionsItemSelected(item)
@@ -62,9 +59,7 @@ class ListFragment : Fragment() {
             mNoteViewModel.deleteAllNotes()
             Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT).show()
         }
-        builder.setNegativeButton("No") { _, _ ->
-
-        }
+        builder.setNegativeButton("No") { _, _ -> }
         builder.setTitle("Delete everything?")
         builder.setMessage("Are you sure you want delete everything?")
         builder.create().show()

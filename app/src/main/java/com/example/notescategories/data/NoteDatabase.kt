@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.notescategories.model.Note
 
-@Database(entities = [Note::class], version = 2, exportSchema = false)
+@Database(entities = [Note::class], version = 3, exportSchema = false)
 abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun noteDao(): NoteDao
@@ -15,17 +15,16 @@ abstract class NoteDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: NoteDatabase? = null
 
-        fun getDatabase(context: Context): NoteDatabase{
+        fun getDatabase(context: Context): NoteDatabase {
             val tempInstance = INSTANCE
-            if(tempInstance != null){
+            if (tempInstance != null) {
                 return tempInstance
             }
-            synchronized(this){
+            synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     NoteDatabase::class.java, "note_database"
                 ).fallbackToDestructiveMigration().build()
-
 
                 INSTANCE = instance
                 return instance
