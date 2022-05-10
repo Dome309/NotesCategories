@@ -11,14 +11,14 @@
         android:id="@+id/addFirstName_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:ems="10"
         android:hint="Title"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxLines="1"
+        />
 
     <EditText
         android:id="@+id/addLastName_et"
@@ -27,7 +27,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Note text"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
