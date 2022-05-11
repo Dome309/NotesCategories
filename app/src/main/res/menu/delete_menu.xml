@@ -19,5 +19,4 @@
         android:title="Delete"
         app:showAsAction="ifRoom"
         tools:targetApi="o" />
-
 </menu>

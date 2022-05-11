@@ -7,6 +7,8 @@
     android:padding="24dp"
     tools:context=".fragments.add.AddFragment">
 
+
+
     <EditText
         android:id="@+id/addFirstName_et"
         android:layout_width="match_parent"
@@ -50,10 +52,10 @@
         android:id="@+id/add_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="200dp"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCategory_et" />
+        app:layout_constraintTop_toBottomOf="@+id/addFirstName_et" />
 </androidx.constraintlayout.widget.ConstraintLayout>
