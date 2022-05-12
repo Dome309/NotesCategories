@@ -16,35 +16,43 @@
         android:hint="Title"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:maxLines="1"
         />
+
+    <TextView
+        android:id="@+id/addDateTime_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/_8sdp"
+        android:hint="Date"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addFirstName_et" />
 
     <EditText
         android:id="@+id/addLastName_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:ems="10"
         android:hint="Note text"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addFirstName_et" />
+        app:layout_constraintTop_toBottomOf="@+id/addDateTime_et" />
 
     <EditText
         android:id="@+id/addCategory_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:ems="10"
         android:hint="Category"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addLastName_et" />
 

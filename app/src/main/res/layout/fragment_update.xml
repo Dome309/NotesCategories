@@ -20,6 +20,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/updateDateTime_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/_8sdp"
+        android:hint="Date"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateFirstName_et" />
+
     <EditText
         android:id="@+id/updateLastName_et"
         android:layout_width="match_parent"
@@ -31,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateFirstName_et" />
+        app:layout_constraintTop_toBottomOf="@+id/updateDateTime_et" />
 
     <EditText
         android:id="@+id/updateCategory_et"

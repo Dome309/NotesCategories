@@ -12,5 +12,6 @@ data class Note(
     val id: Int,
     val firstName: String,
     val lastName: String,
-    val category: String
+    val category: String,
+    val date: String
 ):Parcelable

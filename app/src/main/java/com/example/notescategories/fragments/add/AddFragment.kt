@@ -12,6 +12,8 @@ import com.example.notescategories.model.Note
 import com.example.notescategories.viewmodel.NoteViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddFragment : Fragment() {
 
@@ -32,14 +34,23 @@ class AddFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+        val currentDate = sdf.format(Date())
+
+        addDateTime_et.text = currentDate
+    }
+
     private fun insertDataToDatabase() {
         val firstName = addFirstName_et.text.toString()
         val lastName = addLastName_et.text.toString()
         val category = addCategory_et.text.toString()
+        val date = addDateTime_et.text.toString()
 
         if (inputCheck(firstName, lastName)) {
             // Create Note Object
-            val note = Note(0, firstName, lastName, category)
+            val note = Note(0, firstName, lastName, category, date)
             // Add Data to Database
             mNoteViewModel.addNote(note)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
