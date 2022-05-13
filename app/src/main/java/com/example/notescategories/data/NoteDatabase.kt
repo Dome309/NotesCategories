@@ -19,7 +19,7 @@ abstract class NoteDatabase : RoomDatabase() {
                     context,
                     NoteDatabase::class.java,
                     "note.db"
-                ).build()
+                ).createFromAsset("note.db").allowMainThreadQueries().build()
             }
 
                 return noteDatabase!!

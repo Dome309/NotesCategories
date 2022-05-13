@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.codingwithme.notesapp.BaseFragment
+import com.example.notescategories.data.NoteDatabase
 import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.fragment_add_note.*
 import kotlinx.coroutines.launch
@@ -16,6 +17,7 @@ import java.util.*
 
 class AddNoteFragment : BaseFragment() {
 
+    var currentDate:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +48,11 @@ class AddNoteFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-        val currentDate = sdf.format(Date())
+        currentDate = sdf.format(Date())
 
         addDateTime_et.text = currentDate
 
-        imgback.setOnClickListener{
+        imgdone.setOnClickListener{
             addNote()
         }
 
@@ -63,19 +65,27 @@ class AddNoteFragment : BaseFragment() {
         if(addTitle_et.text.isNullOrEmpty()){
             Toast.makeText(context, "Note title is required", Toast.LENGTH_SHORT).show()
         }
-        if(addCategory_et.text.isNullOrEmpty()){
+        else if(addCategory_et.text.isNullOrEmpty()){
             Toast.makeText(context, "Note category is required", Toast.LENGTH_SHORT).show()
         }
-        if(addNoteText_et.text.isNullOrEmpty()){
+        else if(addNoteText_et.text.isNullOrEmpty()){
             Toast.makeText(context, "Note description is required", Toast.LENGTH_SHORT).show()
         }
+        else {
+            launch {
+                var note = Note()
+                note.title = addTitle_et.text.toString()
+                note.category = addCategory_et.text.toString()
+                note.noteText = addNoteText_et.text.toString()
+                note.dateTime = currentDate
 
-        launch {
-            var note = Note()
-            note.title = addTitle_et.text.toString()
-            note.category = addCategory_et.text.toString()
-            note.title = addTitle_et.text.toString()
-
+                context?.let{
+                    NoteDatabase.getDatabase(it).noteDao().addNote(note)
+                    addTitle_et.setText("")
+                    addCategory_et.setText("")
+                    addNoteText_et.setText("")
+                }
+            }
         }
     }
 
@@ -85,6 +95,6 @@ class AddNoteFragment : BaseFragment() {
         if(istransition){
             fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_in_left)
         }
-        fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName)
+        fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
 }
