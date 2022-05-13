@@ -1,24 +1,26 @@
 package com.example.notescategories
 
-import android.app.SearchManager
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import androidx.appcompat.widget.SearchView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupActionBarWithNavController(findNavController(R.id.fragment))
+        replaceFragment(HomeFragment.newInstance(),false)
+
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.fragment)
-        return navController.navigateUp() || super.onSupportNavigateUp()
+
+    fun replaceFragment(fragment:Fragment, istransition:Boolean){
+        val fragmentTransition = supportFragmentManager.beginTransaction()
+
+        if (istransition){
+            fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+        }
+        fragmentTransition.add(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
 }

@@ -1,25 +1,18 @@
 package com.example.notescategories.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.notescategories.model.Note
 
 @Dao
-interface NoteDao {
+abstract class NoteDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addNote(note: Note)
+    @Query("SELECT * FROM note_table ORDER BY id DESC")
+    abstract fun getAllNote() : List<Note>
 
-    @Update
-    suspend fun updateNote(note: Note)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun addNote(note: Note)
 
     @Delete
-    suspend fun deleteNote(note: Note)
-
-    @Query("DELETE FROM note_table")
-    suspend fun deleteAllNotes()
-
-    @Query("SELECT * FROM note_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<Note>>
+    abstract fun deleteNote(note: Note)
 
 }
