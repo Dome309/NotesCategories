@@ -5,16 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.adapter.NoteAdapter
 import com.example.notescategories.data.NoteDatabase
+import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : BaseFragment() {
 
+    var arrNote = ArrayList<Note>()
+    var noteAdapter : NoteAdapter = NoteAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +54,40 @@ class HomeFragment : BaseFragment() {
         launch {
             context?.let {
                 var note = NoteDatabase.getDatabase(it).noteDao().getAllNote()
-                recycler_view.adapter = NoteAdapter(note)
+                noteAdapter!!.setData(note)
+                arrNote = note as ArrayList<Note>
+                recycler_view.adapter = noteAdapter
             }
         }
 
         addBtn.setOnClickListener{
             replaceFragment(AddNoteFragment.newInstance(), true)
         }
+
+        search_view.setOnQueryTextListener( object : android.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+
+                var tempArr = ArrayList<Note>()
+
+                for (arr in arrNote){
+                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                        tempArr.add(arr)
+                    }else if(arr.noteText!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+
+                        tempArr.add(arr)
+                    }
+                }
+
+                noteAdapter.setData(tempArr)
+                noteAdapter.notifyDataSetChanged()
+                return true
+            }
+
+        })
     }
 
     fun replaceFragment(fragment: Fragment, istransition:Boolean){
