@@ -44,6 +44,20 @@ class HomeFragment : BaseFragment() {
             }
     }
 
+    private val onClicked = object : NoteAdapter.OnItemClickListener{
+        override fun onClicked(noteId: Int) {
+
+
+            var fragment : Fragment
+            var bundle = Bundle()
+            bundle.putInt("noteId",noteId)
+            fragment = AddNoteFragment.newInstance()
+            fragment.arguments = bundle
+
+            replaceFragment(fragment, true)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,6 +77,8 @@ class HomeFragment : BaseFragment() {
         addBtn.setOnClickListener{
             replaceFragment(AddNoteFragment.newInstance(), true)
         }
+
+        noteAdapter!!.setOnClickListener(onClicked)
 
         search_view.setOnQueryTextListener( object : android.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -89,6 +105,8 @@ class HomeFragment : BaseFragment() {
 
         })
     }
+
+    
 
     fun replaceFragment(fragment: Fragment, istransition:Boolean){
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()

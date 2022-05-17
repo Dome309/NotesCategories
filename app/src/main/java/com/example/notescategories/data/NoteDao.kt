@@ -9,6 +9,9 @@ abstract class NoteDao {
     @Query("SELECT * FROM note_table ORDER BY id DESC")
     abstract fun getAllNote() : List<Note>
 
+    @Query("SELECT * FROM note_table WHERE id=:id")
+    abstract fun getNote(id:Int) : Note
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun addNote(note: Note)
 

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.item_note.view.*
 class NoteAdapter() :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    var listener: AdapterView.OnItemClickListener? = null
+    var listener: OnItemClickListener? = null
     var arrList = ArrayList<Note>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteAdapter.NoteViewHolder {
@@ -25,6 +25,10 @@ class NoteAdapter() :
         holder.itemView.note_title_card.text = arrList[position].title
         holder.itemView.date_time_card.text = arrList[position].dateTime
         holder.itemView.note_text_card.text = arrList[position].noteText
+
+        holder.itemView.cardView.setOnClickListener{
+            listener!!.onClicked(arrList[position].id!!)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,8 +39,16 @@ class NoteAdapter() :
         arrList = arrNotesList as ArrayList<Note>
     }
 
+    fun setOnClickListener(listener1:OnItemClickListener){
+        listener = listener1
+    }
+
     class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
+    }
+
+    interface OnItemClickListener{
+        fun onClicked(noteId:Int)
     }
 
 }

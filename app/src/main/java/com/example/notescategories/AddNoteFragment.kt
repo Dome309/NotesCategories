@@ -11,6 +11,7 @@ import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.data.NoteDatabase
 import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.fragment_add_note.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -18,12 +19,12 @@ import java.util.*
 class AddNoteFragment : BaseFragment() {
 
     var currentDate:String? = null
+    private var noteId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
+        noteId = requireArguments().getInt("noteId")
     }
 
     override fun onCreateView(
@@ -46,8 +47,21 @@ class AddNoteFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        if(noteId != -1){
+            launch {
+                context?.let {
+                    var note = NoteDatabase.getDatabase(it).noteDao().getNote(noteId)
+
+                    addTitle_et.setText(note.title)
+                    addCategory_et.setText(note.category)
+                    addNoteText_et.setText(note.noteText)
+                }
+            }
+        }
+
         super.onViewCreated(view, savedInstanceState)
-        val sdf = SimpleDateFormat("dd/M/yyyy")
+        val sdf = SimpleDateFormat("dd MMMM yyyy hh:mm")
         currentDate = sdf.format(Date())
 
         addDateTime_et.text = currentDate
