@@ -74,11 +74,11 @@ class HomeFragment : BaseFragment() {
             }
         }
 
+        noteAdapter!!.setOnClickListener(onClicked)
+
         addBtn.setOnClickListener{
             replaceFragment(AddNoteFragment.newInstance(), true)
         }
-
-        noteAdapter!!.setOnClickListener(onClicked)
 
         search_view.setOnQueryTextListener( object : android.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {

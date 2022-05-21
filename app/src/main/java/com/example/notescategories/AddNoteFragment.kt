@@ -19,12 +19,12 @@ import java.util.*
 class AddNoteFragment : BaseFragment() {
 
     var currentDate:String? = null
-    private var noteId = -1
+    var noteId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        noteId = requireArguments().getInt("noteId")
+        noteId = requireArguments().getInt("noteId", -1)
     }
 
     override fun onCreateView(
@@ -67,7 +67,11 @@ class AddNoteFragment : BaseFragment() {
         addDateTime_et.text = currentDate
 
         imgdone.setOnClickListener{
-            addNote()
+            if (noteId != -1){
+                updateNote()
+            }else{
+                addNote()
+            }
         }
 
         imgback.setOnClickListener{
@@ -99,6 +103,27 @@ class AddNoteFragment : BaseFragment() {
                     addCategory_et.setText("")
                     addNoteText_et.setText("")
                 }
+            }
+        }
+    }
+
+    private fun updateNote(){
+        launch {
+
+            context?.let {
+                var notes = NoteDatabase.getDatabase(it).noteDao().getNote(noteId)
+
+                notes.title = addTitle_et.text.toString()
+                notes.category = addCategory_et.text.toString()
+                notes.noteText = addNoteText_et.text.toString()
+                notes.dateTime = currentDate
+
+                NoteDatabase.getDatabase(it).noteDao().updateNote(notes)
+                addTitle_et.setText("")
+                addCategory_et.setText("")
+                addNoteText_et.setText("")
+
+                requireActivity().supportFragmentManager.popBackStack()
             }
         }
     }
