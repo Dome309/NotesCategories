@@ -18,6 +18,9 @@ abstract class NoteDao {
     @Update
     abstract fun updateNote(note:Note)
 
+    @Query("DELETE FROM note_table WHERE id=:id")
+    abstract fun deleteCurrentNote(id:Int)
+
     @Delete
     abstract fun deleteNote(note: Note)
 

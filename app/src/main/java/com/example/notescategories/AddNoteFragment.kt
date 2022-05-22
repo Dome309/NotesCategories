@@ -77,6 +77,11 @@ class AddNoteFragment : BaseFragment() {
         imgback.setOnClickListener{
             replaceFragment(HomeFragment.newInstance(), false)
         }
+
+        imgdelete.setOnClickListener{
+            deleteNote()
+        }
+
     }
 
     private fun addNote(){
@@ -102,6 +107,7 @@ class AddNoteFragment : BaseFragment() {
                     addTitle_et.setText("")
                     addCategory_et.setText("")
                     addNoteText_et.setText("")
+                    replaceFragment(HomeFragment.newInstance(), false)
                 }
             }
         }
@@ -122,6 +128,16 @@ class AddNoteFragment : BaseFragment() {
                 addTitle_et.setText("")
                 addCategory_et.setText("")
                 addNoteText_et.setText("")
+
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
+    }
+
+    private fun deleteNote(){
+        launch {
+            context?.let{
+                NoteDatabase.getDatabase(it).noteDao().deleteCurrentNote(noteId)
 
                 requireActivity().supportFragmentManager.popBackStack()
             }
