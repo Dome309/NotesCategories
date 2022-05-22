@@ -15,7 +15,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
         android:text="Notes"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
         android:layout_margin="@dimen/_10sdp"
         android:background="@drawable/searchbar_background"
         android:iconifiedByDefault="false"
-        android:queryBackground="@color/gray"
+        android:queryBackground="@color/srcBarColor"
         android:queryHint="Search"
         android:searchIcon="@drawable/ic_search"
         android:theme="@style/ThemeOverlay.search"

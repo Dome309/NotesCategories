@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/backgroundColor2"
     tools:context=".MainActivity">
 
     <TextView
@@ -49,6 +49,8 @@
         android:maxLines="1"
         android:paddingStart="@dimen/_10sdp"
         android:textSize="@dimen/_9sdp"
+        android:textColorHint="@color/textColor"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgback" />
@@ -66,7 +68,8 @@
         android:hint="Title"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/black"
+        android:textColorHint="@color/textColor"
+        android:textColor="@color/textColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addDateTime_et" />
@@ -85,7 +88,8 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/black"
+        android:textColorHint="@color/textColor"
+        android:textColor="@color/textColor"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +107,8 @@
         android:hint="Note text"
         android:inputType="textMultiLine"
         android:padding="@dimen/_10sdp"
-        android:textColor="@color/black"
+        android:textColorHint="@color/textColor"
+        android:textColor="@color/textColor"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,12 +116,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="4"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

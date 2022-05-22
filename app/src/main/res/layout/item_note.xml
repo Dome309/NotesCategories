@@ -11,7 +11,7 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_5sdp"
         android:layout_margin="@dimen/_5sdp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/cardColor"
         android:padding="@dimen/_5sdp">
 
         <LinearLayout
@@ -28,13 +28,14 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
             android:text="Notes"
-            android:textColor="#000000"
+            android:textColor="@color/textColor"
             android:textSize="@dimen/_15ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
+            android:textColor="@color/textColor"
             android:id="@+id/note_text_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:textColor="@color/textColor"
             android:id="@+id/date_time_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
