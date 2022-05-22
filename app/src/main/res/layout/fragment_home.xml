@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/note_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/manropebold"
         android:paddingStart="@dimen/_10sdp"
@@ -20,6 +20,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/switch_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_dark_mode"
+        android:tint="@color/yellow"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingTop="@dimen/_14sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"

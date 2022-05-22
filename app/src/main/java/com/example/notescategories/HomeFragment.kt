@@ -1,10 +1,12 @@
 package com.example.notescategories
 
+import android.content.*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.adapter.NoteAdapter
@@ -77,6 +79,29 @@ class HomeFragment : BaseFragment() {
 
         addBtn.setOnClickListener{
             replaceFragment(AddNoteFragment.newInstance(), true)
+        }
+
+        val appSettingPrefs : SharedPreferences = requireActivity().getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit : SharedPreferences.Editor = appSettingPrefs.edit()
+        val NightMode : Boolean = appSettingPrefs.getBoolean("NightMode", false)
+
+        if(NightMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+        switch_btn.setOnClickListener {
+            if(NightMode){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                sharedPrefsEdit.putBoolean("NightMode", false)
+                sharedPrefsEdit.apply()
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPrefsEdit.putBoolean("NightMode", true)
+                sharedPrefsEdit.apply()
+            }
+
         }
 
         search_view.setOnQueryTextListener( object : android.widget.SearchView.OnQueryTextListener{
