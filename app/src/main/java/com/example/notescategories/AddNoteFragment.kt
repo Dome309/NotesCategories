@@ -11,7 +11,6 @@ import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.data.NoteDatabase
 import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.fragment_add_note.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -75,13 +74,16 @@ class AddNoteFragment : BaseFragment() {
         }
 
         imgback.setOnClickListener{
-            replaceFragment(HomeFragment.newInstance(), false)
+            replaceFragment(HomeFragment.newInstance(), true)
         }
 
         imgdelete.setOnClickListener{
             deleteNote()
         }
 
+        imgnewnote.setOnClickListener{
+            replaceFragment(newInstance(), true)
+        }
     }
 
     private fun addNote(){
@@ -107,7 +109,7 @@ class AddNoteFragment : BaseFragment() {
                     addTitle_et.setText("")
                     addCategory_et.setText("")
                     addNoteText_et.setText("")
-                    replaceFragment(HomeFragment.newInstance(), false)
+                    replaceFragment(HomeFragment.newInstance(), true)
                 }
             }
         }
@@ -140,6 +142,8 @@ class AddNoteFragment : BaseFragment() {
                 NoteDatabase.getDatabase(it).noteDao().deleteCurrentNote(noteId)
 
                 requireActivity().supportFragmentManager.popBackStack()
+
+                Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.adapter.NoteAdapter
@@ -90,9 +89,9 @@ class HomeFragment : BaseFragment() {
                 var tempArr = ArrayList<Note>()
 
                 for (arr in arrNote){
-                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString())){
                         tempArr.add(arr)
-                    }else if(arr.noteText!!.toLowerCase(Locale.getDefault()).contains(p0.toString())){
+                    }else if(arr.noteText!!.lowercase(Locale.getDefault()).contains(p0.toString())){
 
                         tempArr.add(arr)
                     }

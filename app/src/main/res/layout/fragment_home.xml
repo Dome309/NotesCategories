@@ -15,7 +15,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
         android:text="Notes"
-        android:textColor="@color/yellow"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

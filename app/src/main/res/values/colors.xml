@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="yellow">#ffcc22</color>
-    <color name="backgroundColor">#f7f7f7</color>
+    <color name="yellow">#e1a402</color>
+    <color name="backgroundColor">#f2f2f7</color>
     <color name="white">#ffffff</color>
-    <color name="gray">#ededed</color>
+    <color name="gray">#e4e4e8</color>
     <color name="black">#000000</color>
 </resources>

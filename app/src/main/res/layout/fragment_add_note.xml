@@ -4,22 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
-    <ImageView
+    <TextView
         android:id="@+id/imgback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:src="@drawable/ic_back"
+        android:drawableLeft="@drawable/ic_back"
+        android:text="Notes"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/yellow"
+        android:drawableTint="@color/yellow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgdone"
+        android:tint="@color/yellow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
@@ -34,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:ellipsize="end"
@@ -52,7 +57,9 @@
         android:id="@+id/addTitle_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:background="@null"
         android:ellipsize="end"
         android:fontFamily="@font/manropebold"
@@ -68,7 +75,9 @@
         android:id="@+id/addCategory_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:background="@null"
         android:ellipsize="end"
         android:fontFamily="@font/manroperegular"
@@ -86,7 +95,9 @@
         android:id="@+id/addNoteText_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:background="@null"
         android:fontFamily="@font/manroperegular"
         android:hint="Note text"
@@ -101,47 +112,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
+        android:layout_margin="@dimen/_10sdp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="4"
-        android:layout_margin="@dimen/_10sdp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:tint="@color/yellow"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_weight="1"
-            android:src="@drawable/ic_link" />
+            android:src="@drawable/ic_link"
+            android:tint="@color/yellow" />
 
         <ImageView
-            android:tint="@color/yellow"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_photo" />
+            android:src="@drawable/ic_photo"
+            android:tint="@color/yellow" />
 
         <ImageView
-            android:tint="@color/yellow"
             android:id="@+id/imgdelete"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_delete" />
+            android:src="@drawable/ic_delete"
+            android:tint="@color/yellow" />
 
         <ImageView
-            android:tint="@color/yellow"
             android:id="@+id/imgnewnote"
             android:layout_width="@dimen/_24sdp"
             android:layout_height="@dimen/_24sdp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_create" />
+            android:src="@drawable/ic_create"
+            android:tint="@color/yellow" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
