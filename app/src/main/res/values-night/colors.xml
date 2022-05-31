@@ -2,13 +2,17 @@
 <resources>
 
     <color name="colorPrimaryDark">#000000</color>
-    <color name="yellow">#e1a402</color>
+
+    <color name="blue">#4e33ff</color>
 
     <color name="backgroundColor">#000000</color>
     <color name="cardColor">#1c1c1e</color>
     <color name="srcBarColor">#1d1d1f</color>
-    <color name="textColor">#ffffff</color>
+
+    <color name="textColorTitle">#ffffff</color>
+    <color name="textColorText">#E6ffffff</color>
+    <color name="textColorDate">#99ffffff</color>
+
     <color name="textColorHint">#808080</color>
 
-    <color name="backgroundColor2">#000000</color>
 </resources>

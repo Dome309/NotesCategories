@@ -28,14 +28,14 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
             android:text="Notes"
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorTitle"
             android:textSize="@dimen/_15ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorText"
             android:id="@+id/note_text_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:textColor="@color/textColor"
+            android:textColor="@color/textColorDate"
             android:id="@+id/date_time_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

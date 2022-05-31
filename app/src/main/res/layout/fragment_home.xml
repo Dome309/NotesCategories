@@ -15,7 +15,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingTop="@dimen/_10sdp"
         android:text="Notes"
-        android:textColor="@color/textColor"
+        android:textColor="@color/textColorTitle"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_dark_mode"
-        android:tint="@color/yellow"
+        android:tint="@color/blue"
         android:paddingEnd="@dimen/_10sdp"
         android:paddingTop="@dimen/_14sdp"
         app:layout_constraintTop_toTopOf="parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor2"
+    android:background="@color/backgroundColor"
     tools:context=".MainActivity">
 
     <TextView
@@ -17,14 +17,14 @@
         android:drawableLeft="@drawable/ic_back"
         android:text="Notes"
         android:textSize="@dimen/_12ssp"
-        android:textColor="@color/yellow"
-        android:drawableTint="@color/yellow"
+        android:textColor="@color/blue"
+        android:drawableTint="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgdone"
-        android:tint="@color/yellow"
+        android:tint="@color/blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
@@ -49,8 +49,8 @@
         android:maxLines="1"
         android:paddingStart="@dimen/_10sdp"
         android:textSize="@dimen/_9sdp"
-        android:textColorHint="@color/textColor"
-        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorDate"
+        android:textColor="@color/textColorDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgback" />
@@ -68,8 +68,8 @@
         android:hint="Title"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:textColorHint="@color/textColor"
-        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorTitle"
+        android:textColor="@color/textColorTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addDateTime_et" />
@@ -88,8 +88,8 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
-        android:textColorHint="@color/textColor"
-        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorText"
+        android:textColor="@color/textColorText"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,8 +107,8 @@
         android:hint="Note text"
         android:inputType="textMultiLine"
         android:padding="@dimen/_10sdp"
-        android:textColorHint="@color/textColor"
-        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColorText"
+        android:textColor="@color/textColorText"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +130,7 @@
             android:layout_height="@dimen/_24sdp"
             android:layout_weight="1"
             android:src="@drawable/ic_link"
-            android:tint="@color/yellow" />
+            android:tint="@color/blue" />
 
         <ImageView
             android:layout_width="@dimen/_24sdp"
@@ -138,7 +138,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_photo"
-            android:tint="@color/yellow" />
+            android:tint="@color/blue" />
 
         <ImageView
             android:id="@+id/imgdelete"
@@ -147,7 +147,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_delete"
-            android:tint="@color/yellow" />
+            android:tint="@color/blue" />
 
         <ImageView
             android:id="@+id/imgnewnote"
@@ -156,7 +156,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:src="@drawable/ic_create"
-            android:tint="@color/yellow" />
+            android:tint="@color/blue" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

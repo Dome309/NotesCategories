@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import android.widget.SearchView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.adapter.NoteAdapter
@@ -16,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
-
 
 class HomeFragment : BaseFragment() {
 
@@ -104,7 +104,7 @@ class HomeFragment : BaseFragment() {
 
         }
 
-        search_view.setOnQueryTextListener( object : android.widget.SearchView.OnQueryTextListener{
+        search_view.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return true
             }

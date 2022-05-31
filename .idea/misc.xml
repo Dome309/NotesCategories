@@ -40,10 +40,17 @@
         <entry key="..\:/Users/picco/OneDrive/Desktop/RoomApp/app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/RoomApp/app/src/main/res/layout/fragment_add.xml" value="0.296195652173913" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/RoomApp/app/src/main/res/layout/fragment_list.xml" value="0.296195652173913" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_add.xml" value="0.2955" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/searchbar_background.xml" value="0.2955" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/fragment_add_note.xml" value="0.33" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/item_empty_dataset.xml" value="0.22" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/item_note.xml" value="0.5" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

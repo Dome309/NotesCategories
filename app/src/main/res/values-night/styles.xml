@@ -4,12 +4,12 @@
         <!-- Customize your theme here. -->
 
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/yellow</item>
+        <item name="colorAccent">@color/blue</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name="ThemeOverlay.search" parent="AppTheme">
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/textColorText</item>
         <item name="android:textColorHint">@color/textColorHint</item>
         <item name="iconTint">@color/textColorHint</item>
     </style>
