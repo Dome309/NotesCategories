@@ -3,6 +3,7 @@ package com.example.notescategories.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notescategories.R
 import com.example.notescategories.model.Note
@@ -28,6 +29,11 @@ class NoteAdapter() :
         holder.itemView.cardView.setOnClickListener{
             listener!!.onClicked(arrList[position].id!!)
         }
+    }
+
+    fun deleteItem(i: Int){
+        arrList.removeAt(i)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

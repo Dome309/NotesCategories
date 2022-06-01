@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import android.widget.SearchView
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.adapter.NoteAdapter
@@ -69,11 +71,27 @@ class HomeFragment : BaseFragment() {
         launch {
             context?.let {
                 var note = NoteDatabase.getDatabase(it).noteDao().getAllNote()
-                noteAdapter!!.setData(note)
+                noteAdapter.setData(note)
                 arrNote = note as ArrayList<Note>
                 recycler_view.adapter = noteAdapter
             }
         }
+
+        val swipegesture = object : SwipeGesture(){
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                when(direction){
+                    ItemTouchHelper.LEFT -> {
+                        noteAdapter.deleteItem(viewHolder.adapterPosition)
+                    }
+                }
+
+            }
+        }
+
+        val touchHelper = ItemTouchHelper(swipegesture)
+        touchHelper.attachToRecyclerView(recycler_view)
 
         noteAdapter!!.setOnClickListener(onClicked)
 
@@ -130,7 +148,7 @@ class HomeFragment : BaseFragment() {
         })
     }
 
-    
+
 
     fun replaceFragment(fragment: Fragment, istransition:Boolean){
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()

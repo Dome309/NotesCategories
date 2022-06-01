@@ -1,6 +1,10 @@
 package com.example.notescategories
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +16,7 @@ import com.example.notescategories.data.NoteDatabase
 import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.fragment_add_note.*
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
 
 
@@ -19,11 +24,13 @@ class AddNoteFragment : BaseFragment() {
 
     var currentDate:String? = null
     var noteId = -1
+    private var selectedImgPath = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         noteId = requireArguments().getInt("noteId", -1)
+
     }
 
     override fun onCreateView(
@@ -35,6 +42,8 @@ class AddNoteFragment : BaseFragment() {
     }
 
     companion object {
+
+        val IMAGE_REQUEST_CODE = 100
 
         @JvmStatic
         fun newInstance() =
@@ -55,6 +64,13 @@ class AddNoteFragment : BaseFragment() {
                     addTitle_et.setText(note.title)
                     addCategory_et.setText(note.category)
                     addNoteText_et.setText(note.noteText)
+
+                    if(note.imgPath != ""){
+                        galleryimg.setImageBitmap(BitmapFactory.decodeFile(note.imgPath))
+                        galleryimg.visibility = View.VISIBLE
+                    }else{
+                        galleryimg.visibility = View.GONE
+                    }
                 }
             }
         }
@@ -75,6 +91,10 @@ class AddNoteFragment : BaseFragment() {
 
         imgback.setOnClickListener{
             replaceFragment(HomeFragment.newInstance(), true)
+        }
+
+        imgphoto.setOnClickListener {
+            pickImageGallery()
         }
 
         imgdelete.setOnClickListener{
@@ -103,13 +123,14 @@ class AddNoteFragment : BaseFragment() {
                 note.category = addCategory_et.text.toString()
                 note.noteText = addNoteText_et.text.toString()
                 note.dateTime = currentDate
-
+                note.imgPath = selectedImgPath
                 context?.let{
                     NoteDatabase.getDatabase(it).noteDao().addNote(note)
                     addTitle_et.setText("")
                     addCategory_et.setText("")
                     addNoteText_et.setText("")
-                    replaceFragment(HomeFragment.newInstance(), true)
+                    galleryimg.visibility = View.GONE
+                    requireActivity().supportFragmentManager.popBackStack()
                 }
             }
         }
@@ -130,6 +151,7 @@ class AddNoteFragment : BaseFragment() {
                 addTitle_et.setText("")
                 addCategory_et.setText("")
                 addNoteText_et.setText("")
+                galleryimg.visibility = View.VISIBLE
 
                 requireActivity().supportFragmentManager.popBackStack()
             }
@@ -144,6 +166,50 @@ class AddNoteFragment : BaseFragment() {
                 requireActivity().supportFragmentManager.popBackStack()
 
                 Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun pickImageGallery(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_REQUEST_CODE)
+    }
+
+    private fun getPathFromUri(contentUri: Uri) : String? {
+        var filePath:String?
+        var cursor = requireActivity().contentResolver.query(contentUri, null, null, null, null)
+        if(cursor == null){
+            filePath = contentUri.path
+        }else{
+            cursor.moveToFirst()
+            var index = cursor.getColumnIndex("_data")
+            filePath = cursor.getString(index)
+            cursor.close()
+        }
+
+        return filePath
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK){
+            if(data != null){
+                var selectedImageUrl = data.data
+                if (selectedImageUrl != null){
+                    try {
+                        var inputStream = requireActivity().contentResolver.openInputStream(selectedImageUrl)
+                        var bitmap = BitmapFactory.decodeStream(inputStream)
+                        galleryimg.setImageBitmap(bitmap)
+                        galleryimg.visibility = View.VISIBLE
+
+                        selectedImgPath = getPathFromUri(selectedImageUrl)!!
+
+                    }catch (e:Exception){
+                        Toast.makeText(requireContext(), e.message, Toast.LENGTH_SHORT).show()
+                    }
+
+                }
             }
         }
     }
