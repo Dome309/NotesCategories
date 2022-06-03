@@ -3,7 +3,6 @@ package com.example.notescategories.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notescategories.R
 import com.example.notescategories.model.Note

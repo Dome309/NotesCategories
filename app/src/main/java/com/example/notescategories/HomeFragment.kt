@@ -11,7 +11,6 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.codingwithme.notesapp.BaseFragment
 import com.example.notescategories.adapter.NoteAdapter
 import com.example.notescategories.data.NoteDatabase
 import com.example.notescategories.model.Note
@@ -33,7 +32,6 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -77,7 +75,7 @@ class HomeFragment : BaseFragment() {
             }
         }
 
-        val swipegesture = object : SwipeGesture(){
+        val swipegesture = object : SwipeGesture(requireContext()){
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 

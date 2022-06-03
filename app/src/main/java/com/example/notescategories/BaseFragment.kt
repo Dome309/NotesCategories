@@ -1,4 +1,4 @@
-package com.codingwithme.notesapp
+package com.example.notescategories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
