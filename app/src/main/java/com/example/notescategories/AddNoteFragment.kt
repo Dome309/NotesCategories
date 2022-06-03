@@ -1,6 +1,8 @@
 package com.example.notescategories
 
 import android.app.Activity.RESULT_OK
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
@@ -93,7 +95,7 @@ class AddNoteFragment : BaseFragment() {
         }
 
         imgmore.setOnClickListener {
-            var bottomSheetFragment = BottomSheetFragment.newIstance()
+            var bottomSheetFragment = BottomSheetFragment.newIstance(noteId)
             bottomSheetFragment.show(requireActivity().supportFragmentManager, "Bottom Sheet Fragment")
         }
 
@@ -101,9 +103,7 @@ class AddNoteFragment : BaseFragment() {
             pickImageGallery()
         }
 
-        imgdelete.setOnClickListener{
-            deleteNote()
-        }
+
 
         imgnewnote.setOnClickListener{
             replaceFragment(newInstance(), true)
@@ -218,6 +218,18 @@ class AddNoteFragment : BaseFragment() {
         }
     }
 
+    private val BroadcastReceiver : BroadcastReceiver = object : BroadcastReceiver(){
+        override fun onReceive(p0: Context?, p1: Intent?) {
+
+            var action = p1!!.getStringExtra("action")
+
+            when(action!!){
+                "DeleteNote" -> {
+                    deleteNote()
+                }
+            }
+        }
+    }
     fun replaceFragment(fragment: Fragment, istransition:Boolean){
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 

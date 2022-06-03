@@ -2,21 +2,26 @@ package com.example.notescategories
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
 
     companion object{
-        fun newIstance(): BottomSheetFragment{
+        var noteId = -1
+        fun newIstance(id:Int): BottomSheetFragment{
             val args = Bundle()
             val fragment = BottomSheetFragment()
             fragment.arguments = args
+            noteId = id
             return fragment
         }
     }
@@ -80,6 +85,11 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun setListener(){
-
+        layoutDelete.setOnClickListener{
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("action", "DeleteNote")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+            dismiss()
+        }
     }
 }
