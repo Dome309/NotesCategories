@@ -41,9 +41,16 @@
         <entry key="..\:/Users/picco/OneDrive/Desktop/RoomApp/app/src/main/res/layout/fragment_add.xml" value="0.296195652173913" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/RoomApp/app/src/main/res/layout/fragment_list.xml" value="0.296195652173913" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_add.xml" value="0.2955" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_back.xml" value="0.319" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_create.xml" value="0.319" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_delete.xml" value="0.319" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_done.xml" value="0.319" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_link.xml" value="0.319" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/ic_photo.xml" value="0.319" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/drawable/searchbar_background.xml" value="0.2955" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/fragment_add_note.xml" value="0.33" />
+        <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.5" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/item_empty_dataset.xml" value="0.22" />
         <entry key="..\:/Users/saras/AndroidStudioProjects/NotesCategories/app/src/main/res/layout/item_note.xml" value="0.5" />

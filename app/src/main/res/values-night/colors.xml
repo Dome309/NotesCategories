@@ -6,6 +6,7 @@
     <color name="blue">#4e33ff</color>
 
     <color name="backgroundColor">#000000</color>
+    <color name="backgroundColor2">#080808</color>
     <color name="cardColor">#1c1c1e</color>
     <color name="srcBarColor">#1d1d1f</color>
 
@@ -14,5 +15,6 @@
     <color name="textColorDate">#99ffffff</color>
 
     <color name="textColorHint">#808080</color>
+    <color name="deletecolor">#E53935</color>
 
 </resources>

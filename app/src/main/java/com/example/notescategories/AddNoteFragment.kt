@@ -92,6 +92,11 @@ class AddNoteFragment : BaseFragment() {
             replaceFragment(HomeFragment.newInstance(), true)
         }
 
+        imgmore.setOnClickListener {
+            var bottomSheetFragment = BottomSheetFragment.newIstance()
+            bottomSheetFragment.show(requireActivity().supportFragmentManager, "Bottom Sheet Fragment")
+        }
+
         imgphoto.setOnClickListener {
             pickImageGallery()
         }

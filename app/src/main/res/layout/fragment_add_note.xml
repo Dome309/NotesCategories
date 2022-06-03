@@ -23,6 +23,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imgmore"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_more"
+        app:layout_constraintEnd_toStartOf="@+id/imgdone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blue" />
+
+    <ImageView
         android:id="@+id/imgdone"
         app:tint="@color/blue"
         android:layout_width="wrap_content"

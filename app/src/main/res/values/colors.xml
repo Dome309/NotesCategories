@@ -4,8 +4,11 @@
     <color name="colorPrimaryDark">#f9f9f9</color>
 
     <color name="blue">#4e33ff</color>
+    <color name="red">#E53935</color>
+    <color name="purple">#6200EE</color>
 
     <color name="backgroundColor">#f9f9f9</color>
+    <color name="backgroundColor2">#f9f9f9</color>
     <color name="cardColor">#ffffff</color>
     <color name="srcBarColor">#e4e4e8</color>
 
@@ -14,6 +17,7 @@
     <color name="textColorDate">#99000000</color>
 
     <color name="textColorHint">#808080</color>
-    <color name="deletecolor">#D12B1F</color>
+    <color name="deletecolor">#E53935</color>
+
 
 </resources>
