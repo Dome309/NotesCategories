@@ -76,6 +76,17 @@ class AddNoteFragment : BaseFragment() {
                     }else{
                         galleryimg.visibility = View.GONE
                     }
+
+                    if (note.webLink != ""){
+                        webLink = note.webLink!!
+                        tvWebLink.text = note.webLink
+                        layoutWebUrl.visibility = View.VISIBLE
+                        etWebLink.setText(note.webLink)
+                        imgUrlDelete.visibility = View.VISIBLE
+                    }else{
+                        imgUrlDelete.visibility = View.GONE
+                        layoutWebUrl.visibility = View.GONE
+                    }
                 }
             }
         }
@@ -108,29 +119,35 @@ class AddNoteFragment : BaseFragment() {
             bottomSheetFragment.show(requireActivity().supportFragmentManager, "Bottom Sheet Fragment")
         }
 
-        imgphoto.setOnClickListener {
-            pickImageGallery()
-        }
-
-        imgnewnote.setOnClickListener{
-            replaceFragment(newInstance(), true)
-        }
 
         btnOk.setOnClickListener {
             if(etWebLink.text.toString().trim().isNotEmpty()){
                 checkWebUrl()
             }else{
-                Toast.makeText(requireContext(), "Url required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"Url required",Toast.LENGTH_SHORT).show()
             }
         }
 
         btnCancel.setOnClickListener {
-            layoutWebUrl.visibility = View.GONE
+            if (noteId != -1){
+                tvWebLink.visibility = View.VISIBLE
+                layoutWebUrl.visibility = View.GONE
+            }else{
+                layoutWebUrl.visibility = View.GONE
+            }
+
         }
 
         tvWebLink.setOnClickListener{
             var intent = Intent(Intent.ACTION_VIEW, Uri.parse(etWebLink.text.toString()))
             startActivity(intent)
+        }
+
+        imgUrlDelete.setOnClickListener {
+            webLink = ""
+            tvWebLink.visibility = View.GONE
+            imgUrlDelete.visibility = View.GONE
+            layoutWebUrl.visibility = View.GONE
         }
     }
 
@@ -176,12 +193,15 @@ class AddNoteFragment : BaseFragment() {
                 notes.category = addCategory_et.text.toString()
                 notes.noteText = addNoteText_et.text.toString()
                 notes.dateTime = currentDate
+                notes.imgPath = selectedImgPath
+                notes.webLink = webLink
 
                 NoteDatabase.getDatabase(it).noteDao().updateNote(notes)
                 addTitle_et.setText("")
                 addCategory_et.setText("")
                 addNoteText_et.setText("")
-                galleryimg.visibility = View.VISIBLE
+                galleryimg.visibility = View.GONE
+                tvWebLink.visibility = View.GONE
 
                 requireActivity().supportFragmentManager.popBackStack()
             }
