@@ -4,15 +4,18 @@ import android.app.Activity.RESULT_OK
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.notescategories.data.NoteDatabase
 import com.example.notescategories.model.Note
 import kotlinx.android.synthetic.main.fragment_add_note.*
@@ -26,6 +29,7 @@ class AddNoteFragment : BaseFragment() {
     var currentDate:String? = null
     var noteId = -1
     private var selectedImgPath = ""
+    private var webLink = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +81,11 @@ class AddNoteFragment : BaseFragment() {
         }
 
         super.onViewCreated(view, savedInstanceState)
+
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
+            BroadcastReceiver, IntentFilter("bottom_sheet_action")
+        )
+
         val sdf = SimpleDateFormat("dd MMMM yyyy hh:mm")
         currentDate = sdf.format(Date())
 
@@ -103,10 +112,25 @@ class AddNoteFragment : BaseFragment() {
             pickImageGallery()
         }
 
-
-
         imgnewnote.setOnClickListener{
             replaceFragment(newInstance(), true)
+        }
+
+        btnOk.setOnClickListener {
+            if(etWebLink.text.toString().trim().isNotEmpty()){
+                checkWebUrl()
+            }else{
+                Toast.makeText(requireContext(), "Url required", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnCancel.setOnClickListener {
+            layoutWebUrl.visibility = View.GONE
+        }
+
+        tvWebLink.setOnClickListener{
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse(etWebLink.text.toString()))
+            startActivity(intent)
         }
     }
 
@@ -128,11 +152,13 @@ class AddNoteFragment : BaseFragment() {
                 note.noteText = addNoteText_et.text.toString()
                 note.dateTime = currentDate
                 note.imgPath = selectedImgPath
+                note.webLink = webLink
                 context?.let{
                     NoteDatabase.getDatabase(it).noteDao().addNote(note)
                     addTitle_et.setText("")
                     addCategory_et.setText("")
                     addNoteText_et.setText("")
+                    tvWebLink.visibility = View.GONE
                     galleryimg.visibility = View.GONE
                     requireActivity().supportFragmentManager.popBackStack()
                 }
@@ -227,9 +253,28 @@ class AddNoteFragment : BaseFragment() {
                 "DeleteNote" -> {
                     deleteNote()
                 }
+                "WebUrl" -> {
+                    layoutWebUrl.visibility = View.VISIBLE
+                }
+                else -> {
+                    layoutWebUrl.visibility = View.GONE
+                }
             }
         }
     }
+
+    private fun checkWebUrl(){
+        if (Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()){
+            layoutWebUrl.visibility = View.GONE
+            etWebLink.isEnabled = false
+            webLink = etWebLink.text.toString()
+            tvWebLink.visibility = View.VISIBLE
+            tvWebLink.text = etWebLink.text.toString()
+        }else{
+            Toast.makeText(requireContext(),"Url is not valid",Toast.LENGTH_SHORT).show()
+        }
+    }
+
     fun replaceFragment(fragment: Fragment, istransition:Boolean){
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 

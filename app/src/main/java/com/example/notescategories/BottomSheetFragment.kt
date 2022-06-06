@@ -85,11 +85,27 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun setListener(){
+
         layoutDelete.setOnClickListener{
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action", "DeleteNote")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
+
+        layoutPhoto.setOnClickListener{
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("action","Image")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+            dismiss()
+        }
+
+        layoutWebUrl.setOnClickListener{
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("action","WebUrl")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+            dismiss()
+        }
+
     }
 }

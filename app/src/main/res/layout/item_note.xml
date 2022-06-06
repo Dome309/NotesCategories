@@ -27,12 +27,27 @@
             android:paddingStart="@dimen/_10sdp"
             android:paddingTop="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_2sdp"
             android:text="Notes"
             android:textColor="@color/textColorTitle"
             android:textSize="@dimen/_15ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvWebLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:visibility="gone"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/textColorText"
+                android:textSize="@dimen/_11ssp"
+                android:autoLink="web" />
 
         <TextView
             android:textColor="@color/textColorText"
@@ -41,7 +56,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/manroperegular"
             android:paddingStart="@dimen/_10sdp"
-            android:paddingTop="@dimen/_5sdp"
             android:paddingRight="@dimen/_10sdp"
             android:text="Notes"
             android:textSize="@dimen/_11ssp"

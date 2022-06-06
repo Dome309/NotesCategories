@@ -25,6 +25,13 @@ class NoteAdapter() :
         holder.itemView.date_time_card.text = arrList[position].dateTime
         holder.itemView.note_text_card.text = arrList[position].noteText
 
+        if (arrList[position].webLink != ""){
+            holder.itemView.tvWebLink.text = arrList[position].webLink
+            holder.itemView.tvWebLink.visibility = View.VISIBLE
+        }else{
+            holder.itemView.tvWebLink.visibility = View.GONE
+        }
+
         holder.itemView.cardView.setOnClickListener{
             listener!!.onClicked(arrList[position].id!!)
         }
