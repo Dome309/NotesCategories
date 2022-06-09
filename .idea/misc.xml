@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/drawable-v24/ic_add.xml" value="0.256" />
+        <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/drawable-v24/ic_back.xml" value="0.256" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/drawable-v24/ic_dark_mode.xml" value="0.255" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1295" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/drawable-v24/note_color_1.xml" value="0.235" />
@@ -28,7 +30,7 @@
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/custom_row.xml" value="0.33" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/fragment_add.xml" value="0.33" />
-        <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/fragment_add_note.xml" value="0.25" />
+        <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/fragment_add_note.xml" value="0.33" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.296195652173913" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/picco/OneDrive/Desktop/ProgettoPDM2/NotesCategories/app/src/main/res/layout/fragment_list.xml" value="0.33" />

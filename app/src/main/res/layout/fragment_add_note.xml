@@ -14,18 +14,18 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:drawableLeft="@drawable/ic_back"
-        android:drawableTint="@color/blue"
+        app:drawableTint="@color/blue"
         android:text="Notes"
         android:textColor="@color/blue"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableLeftCompat="@drawable/ic_back" />
 
     <ImageView
         android:id="@+id/imgmore"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:src="@drawable/ic_more"
@@ -35,8 +35,8 @@
 
     <ImageView
         android:id="@+id/imgdone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
@@ -79,6 +79,7 @@
         android:hint="Title"
         android:maxLines="1"
         android:padding="@dimen/_10sdp"
+        android:textSize="@dimen/_14ssp"
         android:textColor="@color/textColorTitle"
         android:textColorHint="@color/textColorTitle"
         app:layout_constraintEnd_toEndOf="parent"

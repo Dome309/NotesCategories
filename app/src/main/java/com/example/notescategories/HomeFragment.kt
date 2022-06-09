@@ -22,7 +22,7 @@ import kotlin.collections.ArrayList
 class HomeFragment : BaseFragment() {
 
     var arrNote = ArrayList<Note>()
-    var noteAdapter : NoteAdapter = NoteAdapter()
+    var noteAdapter: NoteAdapter = NoteAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,13 +45,13 @@ class HomeFragment : BaseFragment() {
             }
     }
 
-    private val onClicked = object : NoteAdapter.OnItemClickListener{
+    private val onClicked = object : NoteAdapter.OnItemClickListener {
         override fun onClicked(noteId: Int) {
 
 
-            var fragment : Fragment
+            var fragment: Fragment
             var bundle = Bundle()
-            bundle.putInt("noteId",noteId)
+            bundle.putInt("noteId", noteId)
             fragment = AddNoteFragment.newInstance()
             fragment.arguments = bundle
 
@@ -64,7 +64,8 @@ class HomeFragment : BaseFragment() {
 
         recycler_view.setHasFixedSize(true)
 
-        recycler_view.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recycler_view.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
         launch {
             context?.let {
@@ -75,11 +76,11 @@ class HomeFragment : BaseFragment() {
             }
         }
 
-        val swipegesture = object : SwipeGesture(requireContext()){
+        val swipegesture = object : SwipeGesture(requireContext()) {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-                when(direction){
+                when (direction) {
                     ItemTouchHelper.LEFT -> {
                         noteAdapter.deleteItem(viewHolder.adapterPosition)
                     }
@@ -93,26 +94,27 @@ class HomeFragment : BaseFragment() {
 
         noteAdapter!!.setOnClickListener(onClicked)
 
-        addBtn.setOnClickListener{
+        addBtn.setOnClickListener {
             replaceFragment(AddNoteFragment.newInstance(), true)
         }
 
-        val appSettingPrefs : SharedPreferences = requireActivity().getSharedPreferences("AppSettingPrefs", 0)
-        val sharedPrefsEdit : SharedPreferences.Editor = appSettingPrefs.edit()
-        val NightMode : Boolean = appSettingPrefs.getBoolean("NightMode", false)
+        val appSettingPrefs: SharedPreferences =
+            requireActivity().getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+        val nightMode: Boolean = appSettingPrefs.getBoolean("NightMode", false)
 
-        if(NightMode){
+        if (nightMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }else{
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
         switch_btn.setOnClickListener {
-            if(NightMode){
+            if (nightMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 sharedPrefsEdit.putBoolean("NightMode", false)
                 sharedPrefsEdit.apply()
-            }else{
+            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 sharedPrefsEdit.putBoolean("NightMode", true)
                 sharedPrefsEdit.apply()
@@ -120,7 +122,7 @@ class HomeFragment : BaseFragment() {
 
         }
 
-        search_view.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return true
             }
@@ -129,10 +131,12 @@ class HomeFragment : BaseFragment() {
 
                 var tempArr = ArrayList<Note>()
 
-                for (arr in arrNote){
-                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString())){
+                for (arr in arrNote) {
+                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString())) {
                         tempArr.add(arr)
-                    }else if(arr.noteText!!.lowercase(Locale.getDefault()).contains(p0.toString())){
+                    } else if (arr.noteText!!.lowercase(Locale.getDefault())
+                            .contains(p0.toString())
+                    ) {
 
                         tempArr.add(arr)
                     }
@@ -146,14 +150,16 @@ class HomeFragment : BaseFragment() {
         })
     }
 
-
-
-    fun replaceFragment(fragment: Fragment, istransition:Boolean){
+    fun replaceFragment(fragment: Fragment, transition: Boolean) {
         val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 
-        if(istransition){
-            fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_in_left)
+        if (transition) {
+            fragmentTransition.setCustomAnimations(
+                android.R.anim.slide_out_right,
+                android.R.anim.slide_in_left
+            )
         }
-        fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
+        fragmentTransition.replace(R.id.frame_layout, fragment)
+            .addToBackStack(fragment.javaClass.simpleName).commit()
     }
 }
