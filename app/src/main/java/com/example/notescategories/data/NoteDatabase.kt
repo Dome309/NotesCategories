@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.notescategories.model.Note
+import com.example.notescategories.entity.Note
 
 @Database(entities = [Note::class], version = 5, exportSchema = false)
 abstract class NoteDatabase : RoomDatabase() {
@@ -16,10 +16,10 @@ abstract class NoteDatabase : RoomDatabase() {
         fun getDatabase(context: Context): NoteDatabase {
             if (noteDatabase == null) {
                 noteDatabase = Room.databaseBuilder(
-                    context,
+                    context.applicationContext,
                     NoteDatabase::class.java,
                     "note.db"
-                ).allowMainThreadQueries().build()
+                ).build()
             }
 
                 return noteDatabase!!

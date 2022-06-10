@@ -1,4 +1,4 @@
-package com.example.notescategories
+package com.example.notescategories.fragments
 
 import android.content.*
 import android.os.Bundle
@@ -11,9 +11,11 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.notescategories.R
+import com.example.notescategories.SwipeGesture
 import com.example.notescategories.adapter.NoteAdapter
 import com.example.notescategories.data.NoteDatabase
-import com.example.notescategories.model.Note
+import com.example.notescategories.entity.Note
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 import java.util.*

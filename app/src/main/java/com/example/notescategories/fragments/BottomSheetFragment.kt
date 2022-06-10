@@ -1,4 +1,4 @@
-package com.example.notescategories
+package com.example.notescategories.fragments
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.notescategories.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
@@ -17,7 +18,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
 
     companion object{
         var noteId = -1
-        fun newIstance(id:Int): BottomSheetFragment{
+        fun newIstance(id:Int): BottomSheetFragment {
             val args = Bundle()
             val fragment = BottomSheetFragment()
             fragment.arguments = args

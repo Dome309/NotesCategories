@@ -1,4 +1,4 @@
-package com.example.notescategories
+package com.example.notescategories.fragments
 
 import android.app.Activity.RESULT_OK
 import android.content.BroadcastReceiver
@@ -10,14 +10,14 @@ import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.notescategories.R
 import com.example.notescategories.data.NoteDatabase
-import com.example.notescategories.model.Note
+import com.example.notescategories.entity.Note
 import kotlinx.android.synthetic.main.fragment_add_note.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -94,7 +94,7 @@ class AddNoteFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
-            BroadcastReceiver, IntentFilter("bottom_sheet_action")
+            broadcastReceiver, IntentFilter("bottom_sheet_action")
         )
 
         val sdf = SimpleDateFormat("dd MMMM yyyy hh:mm")
@@ -111,7 +111,7 @@ class AddNoteFragment : BaseFragment() {
         }
 
         imgback.setOnClickListener{
-            replaceFragment(HomeFragment.newInstance(), true)
+            requireActivity().supportFragmentManager.popBackStack()
         }
 
         imgmore.setOnClickListener {
@@ -136,6 +136,10 @@ class AddNoteFragment : BaseFragment() {
                 layoutWebUrl.visibility = View.GONE
             }
 
+        }
+
+        galleryimg.setOnClickListener {
+            pickImageGallery()
         }
 
         tvWebLink.setOnClickListener{
@@ -264,7 +268,7 @@ class AddNoteFragment : BaseFragment() {
         }
     }
 
-    private val BroadcastReceiver : BroadcastReceiver = object : BroadcastReceiver(){
+    private val broadcastReceiver : BroadcastReceiver = object : BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
 
             var action = p1!!.getStringExtra("action")
@@ -275,9 +279,6 @@ class AddNoteFragment : BaseFragment() {
                 }
                 "WebUrl" -> {
                     layoutWebUrl.visibility = View.VISIBLE
-                }
-                else -> {
-                    layoutWebUrl.visibility = View.GONE
                 }
             }
         }
@@ -293,14 +294,5 @@ class AddNoteFragment : BaseFragment() {
         }else{
             Toast.makeText(requireContext(),"Url is not valid",Toast.LENGTH_SHORT).show()
         }
-    }
-
-    fun replaceFragment(fragment: Fragment, istransition:Boolean){
-        val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
-
-        if(istransition){
-            fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right, android.R.anim.slide_in_left)
-        }
-        fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
 }

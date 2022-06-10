@@ -1,27 +1,27 @@
 package com.example.notescategories.data
 
 import androidx.room.*
-import com.example.notescategories.model.Note
+import com.example.notescategories.entity.Note
 
 @Dao
-abstract class NoteDao {
+interface NoteDao {
 
     @Query("SELECT * FROM note_table ORDER BY id DESC")
-    abstract fun getAllNote() : List<Note>
+    suspend fun getAllNote() : List<Note>
 
     @Query("SELECT * FROM note_table WHERE id=:id")
-    abstract fun getNote(id:Int) : Note
+    suspend fun getNote(id:Int) : Note
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun addNote(note: Note)
+    suspend fun addNote(note: Note)
 
     @Update
-    abstract fun updateNote(note:Note)
+    suspend fun updateNote(note:Note)
 
     @Query("DELETE FROM note_table WHERE id=:id")
-    abstract fun deleteCurrentNote(id:Int)
+    suspend fun deleteCurrentNote(id:Int)
 
     @Delete
-    abstract fun deleteNote(note: Note)
+    suspend fun deleteNote(note: Note)
 
 }
